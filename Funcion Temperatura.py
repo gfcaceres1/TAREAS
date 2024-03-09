@@ -27,42 +27,33 @@ def calcular_promedio_temperatura(ciudades, semanas, temperaturas):
     return promedios
 
 
-# Obtener datos del usuario
-ciudades = []
-while True:
-    ciudad = input("Ingrese el nombre de una ciudad (o 'salir' para terminar): ")
-    if ciudad.lower() == "salir":
-        break
-    ciudades.append(ciudad)
+# Ejemplo de uso
+ciudades = ["Quito", "Guayaquil", "Cuenca"]
+semanas = [1, 2, 3, 4]
+temperaturas = {
+    "Quito": {
+        1: [20, 22, 21, 19],
+        2: [21, 23, 22, 20],
+        3: [22, 24, 23, 21],
+        4: [23, 25, 24, 22],
+    },
+    "Guayaquil": {
+        1: [28, 29, 27, 26],
+        2: [29, 30, 28, 27],
+        3: [30, 31, 29, 28],
+        4: [31, 32, 30, 29],
+    },
+    "Cuenca": {
+        1: [18, 20, 19, 17],
+        2: [19, 21, 20, 18],
+        3: [20, 22, 21, 19],
+        4: [21, 23, 22, 20],
+    },
+}
 
-semanas = []
-while True:
-    try:
-        numero_semana = int(input("Ingrese el número de una semana (1-52): "))
-        if 1 <= numero_semana <= 52:
-            semanas.append(numero_semana)
-            break
-        else:
-            print("Número de semana inválido. Debe ser un número entre 1 y 52.")
-    except ValueError:
-        print("Entrada inválida. Debe ser un número entero.")
-
-temperaturas = {}
-for ciudad in ciudades:
-    temperaturas[ciudad] = {}
-    for semana in semanas:
-        temperaturas[ciudad][semana] = []
-        while True:
-            try:
-                temperatura = float(input(f"Ingrese una temperatura para {ciudad} en la semana {semana}: "))
-                temperaturas[ciudad][semana].append(temperatura)
-                break
-            except ValueError:
-                print("Entrada inválida. Debe ser un número decimal.")
-
-# Calcular y mostrar los promedios
 promedios_ciudades = calcular_promedio_temperatura(ciudades, semanas, temperaturas)
 
+# Imprimir los resultados
 for ciudad, promedios in promedios_ciudades.items():
     print(f"Ciudad: {ciudad}")
     for semana, promedio in enumerate(promedios):
