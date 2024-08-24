@@ -20,6 +20,7 @@ class Inventario:
         else:
             print("Producto no encontrado.")
 
+
     def eliminar_producto(self, codigo):
         if codigo in self.productos:
             del self.productos[codigo]
